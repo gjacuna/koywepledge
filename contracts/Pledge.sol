@@ -8,6 +8,7 @@ contract Pledge {
 
     function pledge(uint256 _rate) public {
         require(_rate>0, "Pledged rate has to be more than 0.");
+        require(!pledges[msg.sender], "Pledger is already pledged.");
         pledges[msg.sender] = true;
         rates[msg.sender] = _rate;
     }
