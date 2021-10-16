@@ -16,4 +16,9 @@ contract Pledge {
     function isPledged(address _polluter) external view returns (bool) {
         return pledges[_polluter]; //all values of a mapping are initialized with false
     }
+
+    function getRate(address _polluter) external view returns (uint256) {
+        require(!pledges[msg.sender],"Polluter has not pledged yet.");
+        return rates[_polluter];
+    }
 }
